@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "dev.akoto.tiabgtmcompat.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "mixins": [
+    "MixinRecipeLogic",
+    "MixinCleanroomLogic"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

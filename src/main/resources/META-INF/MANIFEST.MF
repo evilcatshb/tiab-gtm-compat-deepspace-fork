@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+MixinConfigs: tiab_gtm_compat.mixins.json
+
