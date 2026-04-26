@@ -1,9 +1,14 @@
 # TIAB GTM Compat
 
-<p align="left">
-<a href="https://curseforge.com/minecraft/mc-mods/tiab-gtm-compat">
-<img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg">
-</a>
+<p align="center">
+  <a href="https://portal.craftlands.host/aff.php?aff=150">
+    <img src="https://media.forgecdn.net/attachments/description/1266962/description_3146a8cd-ca5d-46df-b248-9f7647d9b451.png">
+  </a>
+</p>
+<p align="center">
+  <a href="https://curseforge.com/minecraft/mc-mods/tiab-gtm-compat">
+    <img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg">
+  </a>
 </p>
 
 ## About
