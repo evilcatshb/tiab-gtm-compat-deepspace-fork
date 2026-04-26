@@ -1,5 +1,11 @@
 # TIAB GTM Compat
 
+<p align="left">
+<a href="https://curseforge.com/minecraft/mc-mods/tiab-gtm-compat">
+<img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg">
+</a>
+</p>
+
 ## About
 
 A mc20.1 Forge mod that makes the Time in a Bottle tick-acceleration work correctly with GregTech Community Edition Modern machines.
