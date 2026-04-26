@@ -26,7 +26,7 @@ Time in a Bottle accelerates blocks by calling `serverTick()` N times per game t
 
 ## How the magic works
 
-A Mixin on `RecipeLogic.handleRecipeWorking()` (and a separate one on `CleanroomLogic.serverTick()`) tracks `level.gameTime`. On the first call per game tick the normal EU consumption happens. On any subsequent calls within the same tick (TIAB extra ticks), EU draw is skipped but recipe progress still advances — if and only if the natural tick had enough power.
+A Mixin on `RecipeLogic.handleRecipeWorking()` (and a separate one on `CleanroomLogic.serverTick()`) tracks `level.gameTime`. On the first call per game tick the normal EU consumption happens. On any subsequent calls within the same tick (TIAB extra ticks), EU draw is skipped but recipe progress still advances if and only if the natural tick had enough power.
 
 ## Dependencies
 
