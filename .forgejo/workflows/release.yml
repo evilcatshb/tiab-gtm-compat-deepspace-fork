@@ -1,0 +1,46 @@
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  setup:
+    runs-on: docker
+    container:
+      image: git.akoto.dev/akoto090/arch-java:17
+    outputs:
+      java_version: ${{ steps.java.outputs.java_version }}
+    steps:
+      - uses: https://code.forgejo.org/actions/checkout@v4
+
+      - name: read java version
+        id: java
+        run: |
+          version=$(grep '^java_version=' gradle.properties | cut -d= -f2 | tr -d '[:space:]')
+          echo "java_version=${version:-17}" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: setup
+    runs-on: docker
+    container:
+      image: git.akoto.dev/akoto090/arch-java:${{ needs.setup.outputs.java_version }}
+      options: --network host --user root
+    steps:
+      - uses: https://code.forgejo.org/actions/checkout@v4
+
+      - name: make gradlew executable
+        run: chmod +x gradlew
+
+      - name: cache gradle
+        uses: https://code.forgejo.org/actions/cache@v4
+        with:
+          path: /root/.gradle
+          key: gradle-${{ hashFiles("**/*.gradle*", "gradle/wrapper/gradle-wrapper.properties") }}
+          restore-keys: gradle-
+
+      - name: publish
+        run: ./gradlew build publishMods
+        env:
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}

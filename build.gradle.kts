@@ -9,6 +9,7 @@ plugins {
     id("net.neoforged.moddev.legacyforge") version "2.0.91"
     id("org.jetbrains.kotlin.jvm") version "2.2.21"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.2.21"
+    id("me.modmuss50.mod-publish-plugin") version "2.0.1"
 }
 
 val mod_id: String by project
@@ -38,6 +39,11 @@ val tiab_version_range: String by project
 val tiab_curse_file_id: String by project
 val emi_version: String by project
 val jade_curse_file_id: String by project
+val cf_project_id: String by project
+val cf_project_slug: String by project
+val modrinth_project_id: String by project
+val forgejo_host: String by project
+val forgejo_repository: String by project
 
 version = mod_version
 group = mod_group_id
@@ -229,5 +235,35 @@ publishing {
         maven {
             url = uri("file://${project.projectDir}/mcmodsrepo")
         }
+    }
+}
+
+publishMods {
+    file.set(tasks.named<Jar>("jar").flatMap { it.archiveFile })
+    changelog.set(file("CHANGELOG.md").readText())
+    type.set(STABLE)
+    modLoaders.add("forge")
+
+    curseforge {
+        projectId.set(cf_project_id)
+        projectSlug.set(cf_project_slug)
+        accessToken.set(providers.environmentVariable("CURSEFORGE_TOKEN"))
+        minecraftVersions.add(minecraft_version)
+        client.set(true)
+        server.set(true)
+    }
+
+    modrinth {
+        projectId.set(modrinth_project_id)
+        accessToken.set(providers.environmentVariable("MODRINTH_TOKEN"))
+        minecraftVersions.add(minecraft_version)
+    }
+
+    forgejo {
+        accessToken.set(providers.environmentVariable("GIT_TOKEN"))
+        host.set(java.net.URI(forgejo_host))
+        repository.set(forgejo_repository)
+        commitish.set("main")
+        tagName.set(mod_version)
     }
 }
