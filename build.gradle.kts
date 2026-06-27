@@ -9,7 +9,7 @@ plugins {
     id("net.neoforged.moddev.legacyforge") version "2.0.91"
     id("org.jetbrains.kotlin.jvm") version "2.2.21"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.2.21"
-    id("me.modmuss50.mod-publish-plugin") version "2.0.1"
+    id("me.modmuss50.mod-publish-plugin") version "2.1.1"
 }
 
 val mod_id: String by project
@@ -253,10 +253,10 @@ publishMods {
     }
 
     forgejo {
-        accessToken.set(providers.environmentVariable("GIT_TOKEN"))
-        host.set(java.net.URI(forgejo_host))
-        repository.set(forgejo_repository)
-        commitish.set("main")
-        tagName.set(mod_version)
+        accessToken = providers.environmentVariable("GIT_TOKEN")
+        apiEndpoint = "https://git.akoto.dev/api/v1"
+        repository = forgejo_repository
+        commitish = "main"
+        tagName = "v${mod_version}"
     }
 }
