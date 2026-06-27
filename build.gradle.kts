@@ -41,7 +41,6 @@ val emi_version: String by project
 val jade_curse_file_id: String by project
 val cf_project_id: String by project
 val cf_project_slug: String by project
-val modrinth_project_id: String by project
 val forgejo_host: String by project
 val forgejo_repository: String by project
 
@@ -251,12 +250,6 @@ publishMods {
         minecraftVersions.add(minecraft_version)
         client.set(true)
         server.set(true)
-    }
-
-    modrinth {
-        projectId.set(modrinth_project_id)
-        accessToken.set(providers.environmentVariable("MODRINTH_TOKEN"))
-        minecraftVersions.add(minecraft_version)
     }
 
     forgejo {
