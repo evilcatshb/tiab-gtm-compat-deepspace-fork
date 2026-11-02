@@ -1,6 +1,6 @@
 package dev.akoto.tiabgtmcompat.mixin;
 
-import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
+import com.gregtechceu.gtceu.api.machine.trait.recipe.RecipeLogic;
 import com.gregtechceu.gtceu.common.machine.trait.CleanroomLogic;
 
 import net.minecraft.world.level.Level;

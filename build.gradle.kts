@@ -107,6 +107,9 @@ sourceSets["main"].resources {
 repositories {
     mavenLocal()
     mavenCentral()
+    flatDir {
+        dir("libs")
+    }
     maven {
         name = "GTCEu Maven"
         url = uri("https://maven.gtceu.com")
@@ -159,10 +162,11 @@ dependencies {
     "modRuntimeOnly"("curse.maven:jade-324717:${jade_curse_file_id}")
 
     // GregTech and dependencies
-    "modImplementation"("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim") { isTransitive = false }
+    "modImplementation"("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}")
     "modImplementation"("com.lowdragmc.ldlib:ldlib-forge-${minecraft_version}:${ldlib_version}") { isTransitive = false }
     "modImplementation"("com.tterrag.registrate:Registrate:${registrate_version}")
-    "modImplementation"("dev.toma.configuration:configuration-forge-${minecraft_version}:${configuration_version}")
+    "modImplementation"("dev.toma.configuration:configuration-${minecraft_version}:${configuration_version}")
+    compileOnly(fileTree("libs") { include("modularui-*.jar") })
 
     // Time in a Bottle
     "modImplementation"("org.mangorage:tiab-common-api:${tiab_version}")
